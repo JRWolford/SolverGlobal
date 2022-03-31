@@ -2,7 +2,14 @@
 Hello all! Welcome to my rough attempt to complete the requisite coding challenge. In keeping with the theme of being brief but thourough you will find that there are only two projects in the solution, _Api_ and _Api.Unit.Tests_. It should be pretty straight forward but the first one is the actual code for the API and the second one are the few unit tests I wrote for it.
 
 # Setup
-To set this up on your local machine, simply add a connection string record to the **appsettings.Development.json** file to a database that you have access to. Seeing as this has been whacked together pretty quickly I would suggest using a local throwaway database.
+
+## Setup Using Docker
+Assuming you have Docker setup on your local machine, you can make use of the **/build/deploy-dbs.cmd** file which will setup the **docker-compose.yml** and seed any databases as necessary. The connection strings should already be established inside of your **appsettings.Development.json**.
+
+If you run into issues with your port mappings, feel free to modify them, but be aware that you will have to verify the associated connection string is setup.
+
+## Setup Using Available Network Connections
+To set this up on your local machine using databases available on your network, simply add a connection string record to the **appsettings.Development.json** file to a database that you have access to. Seeing as this has been whacked together pretty quickly I would suggest using a local throwaway database.
 
 ```json
 {
