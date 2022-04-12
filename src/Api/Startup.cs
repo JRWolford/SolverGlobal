@@ -27,6 +27,9 @@ namespace Api
       // Add the data services
       services.AddTransient<IDatabaseRepositoryFactory, DatabaseRepositoryFactory>();
 
+      // Add compact data services
+      services.AddTransient<ICompactDataHandler, CompactDataHandler>();
+
       // Add the handlers for the controller
       services.AddTransient<IDataHandler>(serviceProvider =>
       {

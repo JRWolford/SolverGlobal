@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Api.Controllers.Handlers;
 using Api.Controllers.Models;
+using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -73,6 +74,18 @@ namespace Api.Controllers
       _cache.Set($"{databaseName}.{tableName}", result.Value.Data, new TimeSpan(0, 1, 0, 0));
 
       return Ok(result.Value);
+    }
+
+    [HttpGet]
+    [Route("{databaseName}/{tableName}/compactData")]
+    public async Task<IActionResult> GetCompactTableDataAsync(string databaseName, string tableName,
+        [FromServices] ICompactDataHandler handler,
+        [FromQuery] uint pageSize = 50,
+        [FromQuery] uint pageNumber = 1)
+    {
+        var result = await handler.HandleGetPagedCompactTableDataAsync(databaseName, tableName, pageSize, pageNumber);
+
+        return Ok(result.Value);
     }
   }
 }

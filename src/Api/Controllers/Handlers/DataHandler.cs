@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Api.Controllers.Models;
+using Api.Database;
 using CSharpFunctionalExtensions;
 using Microsoft.Extensions.Logging;
 
@@ -81,6 +82,7 @@ namespace Api.Controllers.Handlers
 
       return result;
     }
+
 
     protected abstract bool CanHandleGetTableDataRequest(string databaseName, string tableName);
     protected abstract Task<Result<DataResponse>> DoHandleGetTableDataAsync(string databaseName, string tableName);
